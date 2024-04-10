@@ -12,6 +12,7 @@ class PlayingField:
         self.snake = None
         self.food = None
         self.snake_length = 4
+        self.score = 0
         self.snake_grow = False
         self.direction = Direction.RIGHT
 
@@ -76,6 +77,7 @@ class PlayingField:
             if new_head.x_pos is self.food.x_pos:
                 if new_head.y_pos is self.food.y_pos:
                     self.snake_grow = True
+                    self.score += 1
 
         return False
 

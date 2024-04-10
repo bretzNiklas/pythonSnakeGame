@@ -18,6 +18,8 @@ def main():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     clock = pygame.time.Clock()
 
+    font = pygame.font.SysFont(None, 36)
+
     last_move_call = pygame.time.get_ticks()
     last_food_call = pygame.time.get_ticks()
 
@@ -32,9 +34,15 @@ def main():
 
         screen.fill(game_classes.Theme.DARK.value)
 
+
+
+
         for row in playing_field.fields:
             for field in row:
                 pygame.draw.rect(screen, field.field_state.value, field.rect)
+
+        score_text = font.render(f'Score: {playing_field.score}', True, (255, 255, 255))
+        screen.blit(score_text, (650, 100))
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
